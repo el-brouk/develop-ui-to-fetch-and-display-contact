@@ -1,0 +1,31 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "firstname": "lij",
+      "lastname": "",
+      "email": "lizavetka.b@gmail.com",
+      "homeNo": "+999999999999",
+      "workNo": "",
+      "birthdate": "",
+      "company": "",
+      "jobTitle": "",
+      "notes": "",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
