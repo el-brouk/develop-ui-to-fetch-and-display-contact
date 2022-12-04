@@ -195,9 +195,7 @@ let url = "http://localhost:3000/posts";
     ensure the return handles both success and error
     the posted data should be displayed on the browser as well.
 */
-function persistSubmittedContact(contact) {
-    let url = "http://localhost:3000/posts";
-    
+function persistSubmittedContact(contact) {    
         fetch(url, {
           method: 'POST',
           headers: {
@@ -215,6 +213,7 @@ function persistSubmittedContact(contact) {
             .catch(error => {
                 console.log(error);
             });
+    //getDetails(3);
 }
 
 /*
@@ -224,13 +223,50 @@ function persistSubmittedContact(contact) {
     the fetched data should be displayed on the browser in a modal dialog.
 */
 const getDetails = (id)=>{
+   let expId = id;
    fetch(url)
       .then(response => response.json())
       .then(result => {
-                console.log(result);
+                let item = result.find( it => it.id == expId );
+                console.log (item);
             })
             .catch(error => {
                 console.log(error);
             });
 }
+
+/*
+    showPersistedData() should contain code to fetch details of all existing contacts from server
+    use axios to call the get method and fetch data
+    ensure the return from axios handles both success and error
+    the fetched data should be displayed on the browser
+*/
+const showPersistedData = () => {
+    fetch(url)
+      .then(response => response.json())
+      .then(result => {
+                 let sorted = result.sort(function(a, b) {
+                   let nameA = JSON.stringify(a.firstname).toLowerCase();
+                   let nameB = JSON.stringify(b.firstname).toLowerCase();
+                    if (nameA > nameB) return 1;
+                    if (nameA < nameB) return -1;
+                    return 0;
+                });
+                console.log(sorted);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+}
+
+showPersistedData(); 
+//uncomment this code to display the existing contacts on browser
+
+
+
+
+
+
+
 
