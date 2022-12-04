@@ -1,0 +1,103 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "firstname": "fyk",
+      "lastname": "",
+      "email": "lizavetka.b@gmail.com",
+      "homeNo": "+999999999999",
+      "workNo": "",
+      "birthdate": "",
+      "company": "",
+      "jobTitle": "",
+      "notes": "",
+      "id": 2
+    },
+    {
+      "firstname": "lij",
+      "lastname": "",
+      "email": "lexbruk@gmail.com",
+      "homeNo": "+999999999999",
+      "workNo": "",
+      "birthdate": "",
+      "company": "",
+      "jobTitle": "",
+      "notes": "",
+      "id": 3
+    },
+    {
+      "firstname": "dh",
+      "lastname": "",
+      "email": "lizavetka.b@gmail.com",
+      "homeNo": "+999999999999",
+      "workNo": "",
+      "birthdate": "",
+      "company": "",
+      "jobTitle": "",
+      "notes": "",
+      "id": 4
+    },
+    {
+      "firstname": "liilll",
+      "lastname": "",
+      "email": "lizavetka.b@gmail.com",
+      "homeNo": "+999999999999",
+      "workNo": "",
+      "birthdate": "",
+      "company": "",
+      "jobTitle": "",
+      "notes": "",
+      "id": 5
+    },
+    {
+      "firstname": "fyk",
+      "lastname": "",
+      "email": "lizavetka.b@gmail.com",
+      "homeNo": "+999999999999",
+      "workNo": "",
+      "birthdate": "",
+      "company": "",
+      "jobTitle": "",
+      "notes": "",
+      "id": 6
+    },
+    {
+      "firstname": "dc",
+      "lastname": "",
+      "email": "lexbruk@gmail.com",
+      "homeNo": "+999999999999",
+      "workNo": "",
+      "birthdate": "",
+      "company": "",
+      "jobTitle": "",
+      "notes": "",
+      "id": 7
+    },
+    {
+      "firstname": "vnb",
+      "lastname": "",
+      "email": "lexbruk@gmail.com",
+      "homeNo": "+999999999999",
+      "workNo": "",
+      "birthdate": "",
+      "company": "",
+      "jobTitle": "",
+      "notes": "",
+      "id": 8
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

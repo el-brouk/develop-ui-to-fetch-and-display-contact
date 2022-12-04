@@ -205,11 +205,12 @@ function persistSubmittedContact(contact) {
           },
           body: JSON.stringify(contact) 
         })
-            .then(response => response.json())
-           // .then(result => console.log(JSON.stringify(result)))
+            .then(response => {
+                console.log(`status is: ${response.status}`);
+                return response.json();
+            })
             .then(result => {
                 console.log(result);
-               // document.write(JSON.stringify(result));
             })
             .catch(error => {
                 console.log(error);
@@ -227,7 +228,6 @@ const getDetails = (id)=>{
       .then(response => response.json())
       .then(result => {
                 console.log(result);
-                document.write(JSON.stringify(result));
             })
             .catch(error => {
                 console.log(error);
