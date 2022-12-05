@@ -222,7 +222,7 @@ function persistSubmittedContact(contact) {
     ensure the return handles both success and error
     the fetched data should be displayed on the browser in a modal dialog.
 */
-const getDetails = (id)=>{
+const getDetails = (id) => {
    let expId = id;
    fetch(url)
       .then(response => response.json())
@@ -247,12 +247,13 @@ const showPersistedData = () => {
       .then(result => {
                  let sorted = result.sort(function(a, b) {
                    let nameA = JSON.stringify(a.firstname).toLowerCase();
-                   let nameB = JSON.stringify(b.firstname).toLowerCase();
+                   //let nameB = JSON.stringify(b.firstname).toLowerCase()
+                   let nameB = JSON.stringify(b.firstname);
                     if (nameA > nameB) return 1;
                     if (nameA < nameB) return -1;
                     return 0;
                 });
-                console.log(sorted);
+                displayContacts(sorted);
             })
             .catch(error => {
                 console.log(error);
@@ -261,6 +262,38 @@ const showPersistedData = () => {
 }
 
 showPersistedData(); 
+
+const displayContacts = (sorted) => {
+    let table = document.getElementById('contact-list').getElementsByTagName('tbody')[0];
+    
+    sorted.forEach((contact) => {
+       let row = table.insertRow();
+       let td1 = document.createElement('td');
+       td1.name = 'firstname'
+       td1.innerHTML = contact.firstname;
+       row.appendChild(td1);
+       let td2 = document.createElement('td');
+       td2.name = 'lastname'
+       td2.innerHTML = contact.lastname;
+       row.appendChild(td2);
+       let td3 = document.createElement('td');
+       td3.name = 'email'
+       td3.innerHTML = contact.email;
+       row.appendChild(td3);
+       let td4 = document.createElement('td');
+       td4.name = 'contactNo'
+       td4.innerHTML = contact.homeNo;
+       row.appendChild(td4);
+       let td5 = document.createElement('td');
+       td5.name = 'plusButton'
+       let button = document.createElement('button')
+       button.type = 'button';
+       button.class = "btn btn-primary";
+       button.innerHTML = '+';
+       td5.appendChild(button); 
+       row.appendChild(td5);
+    });
+}
 //uncomment this code to display the existing contacts on browser
 
 
