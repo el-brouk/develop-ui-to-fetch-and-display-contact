@@ -292,10 +292,16 @@ const displayContacts = (sorted) => {
        button.innerHTML = '+';
        td5.appendChild(button); 
        row.appendChild(td5);
+       button.addEventListener("click", function() {
+        alert  (`Contact Details id: ${contact.id}`);
+       });
     });
 }
-//uncomment this code to display the existing contacts on browser
-
+/*
+function alertDetails(contact) {
+    alert (`Contact Details id: ${contact.id}`);
+}
+*/
 
 
 
