@@ -288,20 +288,66 @@ const displayContacts = (sorted) => {
        td5.name = 'plusButton'
        let button = document.createElement('button')
        button.type = 'button';
-       button.class = "btn btn-primary";
-       button.innerHTML = '+';
+       button.setAttribute("class", "btn btn-primary");
+      // button.innerHTML = '+';
+       button.setAttribute("data-bs-dismiss", "alert");
+       button.setAttribute("data-create", "message");
+       let badge = document.createElement('span');
+        badge.innerHTML = '+';
+        button.appendChild(badge);
        td5.appendChild(button); 
        row.appendChild(td5);
+       
        button.addEventListener("click", function() {
-        alert  (`Contact Details id: ${contact.id}`);
+        //alert  (`Contact Details id: ${contact.id}`);
+        /*let alert = document.createElement('div');
+        alert.setAttribute("class","alert alert-success");
+        alert.setAttribute("role", "alert");
+       /* alert.innerHTML = 'Contact details';
+       var alertNode = document.querySelector('.alert')
+        var alert = bootstrap.Alert.getInstance(alertNode)
+        alertNode.innerHTML = 'Contact details';
+        var myAlert = document.getElementById('myAlert')
+        var bsAlert = new bootstrap.Alert(myAlert)
+       // alert.close()*/
+    
+          
+            const container = document.createElement('div');
+            container.classList.add('container');
+            const row = document.createElement('div');
+            row.classList.add('row');
+            row.classList.add('justify-content-md-center');
+            const col = document.createElement('div');
+            col.classList.add('col');
+            col.classList.add('infos');
+            col.style.cssText = 'position: fixed; top: 100px; width: 250px;';
+            row.appendChild(col); 
+            container.appendChild(row); 
+            document.body.appendChild(container);
+           
+ // получаем контейнер
+            const infos = document.querySelector('.infos');
+
+// при нажатию на кнопку добавляем в контейнер alert
+    //document.querySelector('[data-create="message"]').addEventListener('click', () => {
+            const messageText = `Contact Details id: ${contact.id}`;
+            const message = document.createElement('div');
+            message.className = 'alert alert-light alert-dismissible fade show';
+            message.setAttribute('role', 'alert');
+            message.innerHTML = messageText;
+            let button = document.createElement('button')
+            button.type = 'button';
+            button.setAttribute("class", "btn-close");
+            button.setAttribute("data-bs-dismiss", "alert");
+            message.appendChild(button);
+            infos.appendChild(message);
+
        });
+
+     
+
     });
 }
-/*
-function alertDetails(contact) {
-    alert (`Contact Details id: ${contact.id}`);
-}
-*/
 
 
 
