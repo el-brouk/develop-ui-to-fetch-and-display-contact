@@ -174,7 +174,7 @@ const validateNotes = (notes) => {
 }
 
 //disable all dates for whom age is less than 18
-const setMaxDate = element => {
+const setMaxDate = (element) => {
     let date = new Date();
     date.setFullYear(date.getFullYear() - 18);
     element.max = date.toISOString().split("T")[0];
@@ -289,9 +289,9 @@ const displayContacts = (sorted) => {
        let button = document.createElement('button')
        button.type = 'button';
        button.setAttribute("class", "btn btn-primary");
-      // button.innerHTML = '+';
-       button.setAttribute("data-bs-dismiss", "alert");
-       button.setAttribute("data-create", "message");
+       button.setAttribute("data-bs-toggle", "modal");
+       button.setAttribute("data-bs-target", "#detModal");
+       button.setAttribute("data-bs-contact", "contact.id");
        let badge = document.createElement('span');
         badge.innerHTML = '+';
         button.appendChild(badge);
@@ -299,48 +299,8 @@ const displayContacts = (sorted) => {
        row.appendChild(td5);
        
        button.addEventListener("click", function() {
-        //alert  (`Contact Details id: ${contact.id}`);
-        /*let alert = document.createElement('div');
-        alert.setAttribute("class","alert alert-success");
-        alert.setAttribute("role", "alert");
-       /* alert.innerHTML = 'Contact details';
-       var alertNode = document.querySelector('.alert')
-        var alert = bootstrap.Alert.getInstance(alertNode)
-        alertNode.innerHTML = 'Contact details';
-        var myAlert = document.getElementById('myAlert')
-        var bsAlert = new bootstrap.Alert(myAlert)
-       // alert.close()*/
-    
-          
-            const container = document.createElement('div');
-            container.classList.add('container');
-            const row = document.createElement('div');
-            row.classList.add('row');
-            row.classList.add('justify-content-md-center');
-            const col = document.createElement('div');
-            col.classList.add('col');
-            col.classList.add('infos');
-            col.style.cssText = 'position: fixed; top: 100px; width: 250px;';
-            row.appendChild(col); 
-            container.appendChild(row); 
-            document.body.appendChild(container);
-           
- // получаем контейнер
-            const infos = document.querySelector('.infos');
-
-// при нажатию на кнопку добавляем в контейнер alert
-    //document.querySelector('[data-create="message"]').addEventListener('click', () => {
-            const messageText = `Contact Details id: ${contact.id}`;
-            const message = document.createElement('div');
-            message.className = 'alert alert-light alert-dismissible fade show';
-            message.setAttribute('role', 'alert');
-            message.innerHTML = messageText;
-            let button = document.createElement('button')
-            button.type = 'button';
-            button.setAttribute("class", "btn-close");
-            button.setAttribute("data-bs-dismiss", "alert");
-            message.appendChild(button);
-            infos.appendChild(message);
+                
+            modal.show();
 
        });
 
@@ -349,9 +309,50 @@ const displayContacts = (sorted) => {
     });
 }
 
+const createModal = () => {
+   let modal = document.createElement('div');
+    modal.classList.add('modal');
+    modal.id = "detModal";
+    modal.setAttribute('tabindex', '-1');
+    let modalDialog = document.createElement('div');
+    modalDialog.classList.add('modal-dialog');
+    let modalContent = document.createElement('div');
+    modalContent.classList.add('modal-content');
+    let modalHeader = document.createElement('div');
+    modalHeader.classList.add('modal-header');
+    let title = document.createElement('h5');
+    title.classList.add('modal-title');
+    title.innerHTML = 'Contact Details';
+    let buttonTop = document.createElement('button')
+    buttonTop.type = 'button';
+    buttonTop.setAttribute("class", "btn-close");
+    buttonTop.setAttribute("data-bs-dismiss", "modal");
+    let modalBody = document.createElement('div');
+    modalBody.classList.add('modal-body');
+    let message = document.createElement('p');
+   // message.innerText = `id: ${contact.id}`;
+    message.innerText = 'hello';
+    let modalFooter = document.createElement('div');
+    modalFooter.classList.add('modal-footer');
+    let buttonFoot = document.createElement('button')
+    buttonFoot.type = 'button';
+    buttonFoot.setAttribute("class", "btn btn-secondary");
+    buttonFoot.setAttribute("data-bs-dismiss", "modal");
+    buttonFoot.innerHTML = 'Close';
 
+    modalHeader.appendChild(title);
+    modalHeader.appendChild(buttonTop);
+    modalContent.appendChild(modalHeader);
+    modalBody.appendChild(message);
+    modalContent.appendChild(modalBody);
+    modalFooter.appendChild(buttonFoot);
+    modalContent.appendChild(modalFooter);
+    modalDialog.appendChild(modalContent); 
+    modal.appendChild(modalDialog); 
+    document.body.appendChild(modal); 
+}
 
-
+createModal();
 
 
 
