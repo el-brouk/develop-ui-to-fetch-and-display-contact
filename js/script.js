@@ -213,7 +213,6 @@ function persistSubmittedContact(contact) {
             .catch(error => {
                 console.log(error);
             });
-    //getDetails(3);
 }
 
 /*
@@ -229,6 +228,7 @@ const getDetails = (id) => {
       .then(result => {
                 let item = result.find( it => it.id == expId );
                 console.log (item);
+                let name = createDetails(item);
             })
             .catch(error => {
                 console.log(error);
@@ -245,7 +245,7 @@ const showPersistedData = () => {
     fetch(url)
       .then(response => response.json())
       .then(result => {
-                 let sorted = result.sort(function(a, b) {
+                 var sorted = result.sort(function(a, b) {
                    let nameA = JSON.stringify(a.firstname).toLowerCase();
                    //let nameB = JSON.stringify(b.firstname).toLowerCase()
                    let nameB = JSON.stringify(b.firstname);
@@ -258,7 +258,6 @@ const showPersistedData = () => {
             .catch(error => {
                 console.log(error);
             });
-
 }
 
 showPersistedData(); 
@@ -291,23 +290,15 @@ const displayContacts = (sorted) => {
        button.setAttribute("class", "btn btn-primary");
        button.setAttribute("data-bs-toggle", "modal");
        button.setAttribute("data-bs-target", "#detModal");
-       button.setAttribute("data-bs-contact", "contact.id");
+       button.setAttribute("data-bs-contact", contact.id);
        let badge = document.createElement('span');
         badge.innerHTML = '+';
         button.appendChild(badge);
        td5.appendChild(button); 
        row.appendChild(td5);
-       
-       button.addEventListener("click", function() {
-                
-            modal.show();
-
-       });
-
-     
-
     });
 }
+
 
 const createModal = () => {
    let modal = document.createElement('div');
@@ -331,7 +322,6 @@ const createModal = () => {
     modalBody.classList.add('modal-body');
     let message = document.createElement('p');
    // message.innerText = `id: ${contact.id}`;
-    message.innerText = 'hello';
     let modalFooter = document.createElement('div');
     modalFooter.classList.add('modal-footer');
     let buttonFoot = document.createElement('button')
@@ -355,4 +345,23 @@ const createModal = () => {
 createModal();
 
 
+var openedModal = document.getElementById('detModal');
+openedModal.addEventListener('show.bs.modal', function (event) {
+  // Button that triggered the modal
+    var button = event.relatedTarget
+  // Extract info from data-bs-* attributes
+    var openedId = button.getAttribute('data-bs-contact')
+  // Update the modal's content.
+    let message = openedModal.querySelector('p');
+    //message.innerText = collectDetails(openedId);
+    getDetails(openedId);;
+})
 
+
+    let createDetails = (item) => {
+        let name = document.createElement('strong');
+        name.innerText = `${item.firstname} ${item.lastname}`;
+        let message = openedModal.querySelector('p');
+        message.appendChild(name);
+    } 
+    
