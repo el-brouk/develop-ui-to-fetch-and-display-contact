@@ -1,10 +1,9 @@
 
 
-// put validation code here
+// validation code
 
 let contacts = [];
 //import persistSubmittedContact from './contact_service.js';
-//import axios from 'axios';
 
 function init() {
    
@@ -93,9 +92,6 @@ if(document.getElementById('addContact2')){
     displayIndividualErrorMessages(error);
      return false;
  }
-
- //contacts can be logged on to console, or can even be updated on UI
- //console.log(contacts);
 }
 
 
@@ -130,10 +126,8 @@ const validateLastname = (lastName) => {
     return lastNameError; 
 }
 
-
 const isEmpty = value => value === '' || value === undefined || value === null;
 const validateInput = (value, fieldName) => isEmpty(value) ? `${fieldName} cannot be left blank` : '';
-
 
 //function to validate email
 const validateEmail = (email) => {
@@ -164,7 +158,6 @@ const validateContactNo2 = (ContactNo2) => {
     let validRegex = /^[+]\d{2}[(, ]*\d{3}[), ,.,-]*\d{3}[-, ,.]*\d{4}$/;
     let addContactError2 = ( ContactNo2 !== '' && !ContactNo2.match(validRegex) ) ? 'Contact No should start with country code prefixed by + and followed by 10 digits' : '';
     return addContactError2;
-
 }
 
 //function to validate notes
@@ -181,6 +174,7 @@ const setMaxDate = (element) => {
 }
 
 //module.exports = submitContact
+
 
 
 
@@ -227,8 +221,7 @@ const getDetails = (id) => {
       .then(response => response.json())
       .then(result => {
                 let item = result.find( it => it.id == expId );
-                console.log (item);
-                let name = createDetails(item);
+                createDetails(item);
             })
             .catch(error => {
                 console.log(error);
@@ -262,6 +255,7 @@ const showPersistedData = () => {
 
 showPersistedData(); 
 
+/* Display all the contacts in a table */
 const displayContacts = (sorted) => {
     let table = document.getElementById('contact-list').getElementsByTagName('tbody')[0];
     
@@ -299,7 +293,7 @@ const displayContacts = (sorted) => {
     });
 }
 
-
+/* Create a modal for contact details */
 const createModal = () => {
    let modal = document.createElement('div');
     modal.classList.add('modal');
@@ -321,7 +315,6 @@ const createModal = () => {
     let modalBody = document.createElement('div');
     modalBody.classList.add('modal-body');
     let message = document.createElement('p');
-   // message.innerText = `id: ${contact.id}`;
     let modalFooter = document.createElement('div');
     modalFooter.classList.add('modal-footer');
     let buttonFoot = document.createElement('button')
@@ -344,24 +337,37 @@ const createModal = () => {
 
 createModal();
 
-
+/* Opening a modal on clicking a button */
 var openedModal = document.getElementById('detModal');
 openedModal.addEventListener('show.bs.modal', function (event) {
-  // Button that triggered the modal
-    var button = event.relatedTarget
-  // Extract info from data-bs-* attributes
-    var openedId = button.getAttribute('data-bs-contact')
-  // Update the modal's content.
-    let message = openedModal.querySelector('p');
-    //message.innerText = collectDetails(openedId);
-    getDetails(openedId);;
+    var button = event.relatedTarget;
+    var openedId = button.getAttribute('data-bs-contact');
+    getDetails(openedId);
 })
 
-
+/* Writing contact's details in the modal */
     let createDetails = (item) => {
+        let message = openedModal.querySelector('p');
         let name = document.createElement('strong');
         name.innerText = `${item.firstname} ${item.lastname}`;
-        let message = openedModal.querySelector('p');
         message.appendChild(name);
+        let home = document.createElement('p');
+        home.innerText = `Home ${item.homeNo}`;
+        message.appendChild(home);
+        let work = document.createElement('p');
+        work.innerText = `Work ${item.workNo}`;
+        message.appendChild(work);
+        let birth = document.createElement('p');
+        birth.innerText = `Birthdate ${item.birthdate}`;
+        message.appendChild(birth);
+        let company = document.createElement('p');
+        company.innerText = `Company ${item.company}`;
+        message.appendChild(company);
+        let job = document.createElement('p');
+        job.innerText = `Job Title ${item.jobTitle}`;
+        message.appendChild(job);
+        let notes = document.createElement('p');
+        notes.innerText = item.notes;
+        message.appendChild(notes);
     } 
     

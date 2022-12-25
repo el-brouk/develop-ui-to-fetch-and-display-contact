@@ -304,6 +304,18 @@
       "jobTitle": "",
       "notes": "",
       "id": 26
+    },
+    {
+      "firstname": "Bruss",
+      "lastname": "Willies",
+      "email": "bruss@mail.com",
+      "homeNo": "+998877665544",
+      "workNo": "+112233445566",
+      "birthdate": "2019-08-01",
+      "company": "Holywood",
+      "jobTitle": "actor",
+      "notes": "Bruss is an actor",
+      "id": 27
     }
   ],
   "comments": [
