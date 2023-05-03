@@ -28,6 +28,9 @@ More details can be provided when user opts for it.
 
 Hence, the UI should be accordingly developed and populated.
 
+### Problem Statement
+
+Develop Promise driven HTTP client that uses XMLHttpRequest object to make HTTP calls and returns promise to resolve or reject for the request made to provided url
 
 #### Problem Statement
 
@@ -39,8 +42,6 @@ Display the key details, such as
 - LastName
 - Email
 - Home Contact No
-
-The contact list should be arranged in the alphabetical order by the firstname
 
 The contact list should be displayed in tabular format as suggested below:
 
