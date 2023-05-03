@@ -2,14 +2,6 @@
 
 ### Develop UI to Fetch and Display Contact Form Data
 
-#### Context
-
-Prime solutions is an IT solutions provider company who have earned reputation in providing IT solutions in different business domains
-
-Recently they have received a project to develop contact book app.
-
-Prime solutions have approached Graffitti designers for a good UI design.
-
 The design is ready and now it needs to be made functional.
 
 The development will be carried out in stages.
@@ -58,17 +50,3 @@ More contact details should be displayed in a modal view, once the + button is c
 
 ![Contact List](images/contact-details.png)
 
-
-#### Instructions
-
-1. Download and unzip the boilerplate code.  
-2. Run the command `npm install` to install the dependencies required for automated testing.  
-3. Open the boilerplate code in VSCode to develop the assignment solution.
-4. Provide the solution code within the file `script.js`.
-5. Bootstrap framework should be used for responsive table and modal layouts
-6. Launch the `index.html` page on the browser to view the rendered output.
-7. Test the solution locally by running the command `npm run test`.
-8. Refactor the solution to ensure all test cases are passing.  
-9. DO NOT MODIFY THE PROVIDED CODE, ELSE THIS MAY IMPACT THE TEST CODE EXECUTION.
-10. Zip the solution code by selecting all the files and folders **excluding the node_modules folder** and give the name same as assignment name to the zipped file.
-11. Upload the zipped solution for submission.
